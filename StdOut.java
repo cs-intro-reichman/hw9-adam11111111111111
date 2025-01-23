@@ -1,3 +1,4 @@
+
 /******************************************************************************
  *  Compilation:  javac StdOut.java
  *  Execution:    java StdOut
@@ -13,53 +14,58 @@ import java.io.UnsupportedEncodingException;
 import java.util.Locale;
 
 /**
- *  <p><b>Overview.</b>
- *  The {@code StdOut} class provides methods for printing strings and numbers
- *  to standard output.
+ * <p>
+ * <b>Overview.</b>
+ * The {@code StdOut} class provides methods for printing strings and numbers
+ * to standard output.
  *
- *  <p><b>Getting started.</b>
- *  To use this class, you must have {@code StdOut.class} in your
- *  Java classpath. If you used our autoinstaller, you should be all set.
- *  Otherwise, either download
- *  <a href = "https://introcs.cs.princeton.edu/java/code/stdlib.jar">stdlib.jar</a>
- *  and add to your Java classpath or download
- *  <a href = "https://introcs.cs.princeton.edu/java/stdlib/StdOut.java">StdOut.java</a>
- *  and put a copy in your working directory.
- *  <p>
- *  Here is an example program that uses {@code StdOut}:
- *  <pre>
- *   public class TestStdOut {
- *       public static void main(String[] args) {
- *           int a = 17;
- *           int b = 23;
- *           int sum = a + b;
- *           StdOut.println("Hello, World");
- *           StdOut.printf("%d + %d = %d\n", a, b, sum);
- *       }
- *   }
- *  </pre>
- *  <p>
- *  <b>Differences with System.out.</b>
- *  The behavior of {@code StdOut} is similar to that of {@link System#out},
- *  but there are a few technical differences:
- *  <ul>
- *  <li> {@code StdOut} coerces the character-set encoding to UTF-8,
- *       which is a standard character encoding for Unicode.
- *  <li> {@code StdOut} coerces the locale to {@link Locale#US},
- *       for consistency with {@link StdIn}, {@link Double#parseDouble(String)},
- *       and floating-point literals.
- *  <li> {@code StdOut} <em>flushes</em> standard output after each call to
- *       {@code print()} so that text will appear immediately in the terminal.
- *  </ul>
- *  <p>
- *  <b>Reference.</b>
- *  For additional documentation,
- *  see <a href="https://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
- *  <em>Computer Science: An Interdisciplinary Approach</em>
- *  by Robert Sedgewick and Kevin Wayne.
+ * <p>
+ * <b>Getting started.</b>
+ * To use this class, you must have {@code StdOut.class} in your
+ * Java classpath. If you used our autoinstaller, you should be all set.
+ * Otherwise, either download
+ * <a href =
+ * "https://introcs.cs.princeton.edu/java/code/stdlib.jar">stdlib.jar</a>
+ * and add to your Java classpath or download
+ * <a href =
+ * "https://introcs.cs.princeton.edu/java/stdlib/StdOut.java">StdOut.java</a>
+ * and put a copy in your working directory.
+ * <p>
+ * Here is an example program that uses {@code StdOut}:
+ * 
+ * <pre>
+ * public class TestStdOut {
+ *     public static void main(String[] args) {
+ *         int a = 17;
+ *         int b = 23;
+ *         int sum = a + b;
+ *         StdOut.println("Hello, World");
+ *         StdOut.printf("%d + %d = %d\n", a, b, sum);
+ *     }
+ * }
+ * </pre>
+ * <p>
+ * <b>Differences with System.out.</b>
+ * The behavior of {@code StdOut} is similar to that of {@link System#out},
+ * but there are a few technical differences:
+ * <ul>
+ * <li>{@code StdOut} coerces the character-set encoding to UTF-8,
+ * which is a standard character encoding for Unicode.
+ * <li>{@code StdOut} coerces the locale to {@link Locale#US},
+ * for consistency with {@link StdIn}, {@link Double#parseDouble(String)},
+ * and floating-point literals.
+ * <li>{@code StdOut} <em>flushes</em> standard output after each call to
+ * {@code print()} so that text will appear immediately in the terminal.
+ * </ul>
+ * <p>
+ * <b>Reference.</b>
+ * For additional documentation,
+ * see <a href="https://introcs.cs.princeton.edu/15inout">Section 1.5</a> of
+ * <em>Computer Science: An Interdisciplinary Approach</em>
+ * by Robert Sedgewick and Kevin Wayne.
  *
- *  @author Robert Sedgewick
- *  @author Kevin Wayne
+ * @author Robert Sedgewick
+ * @author Kevin Wayne
  */
 public final class StdOut {
 
@@ -76,23 +82,23 @@ public final class StdOut {
     static {
         try {
             out = new PrintWriter(new OutputStreamWriter(System.out, CHARSET_NAME), true);
-        }
-        catch (UnsupportedEncodingException e) {
+        } catch (UnsupportedEncodingException e) {
             System.out.println(e);
         }
     }
 
     // don't instantiate
-    private StdOut() { }
+    private StdOut() {
+    }
 
-   /**
+    /**
      * Terminates the current line by printing the line-separator string.
      */
     public static void println() {
         out.println();
     }
 
-   /**
+    /**
      * Prints an object to this output stream and then terminates the line.
      *
      * @param x the object to print
@@ -101,7 +107,7 @@ public final class StdOut {
         out.println(x);
     }
 
-   /**
+    /**
      * Prints a boolean to standard output and then terminates the line.
      *
      * @param x the boolean to print
@@ -110,7 +116,7 @@ public final class StdOut {
         out.println(x);
     }
 
-   /**
+    /**
      * Prints a character to standard output and then terminates the line.
      *
      * @param x the character to print
@@ -119,7 +125,7 @@ public final class StdOut {
         out.println(x);
     }
 
-   /**
+    /**
      * Prints a double to standard output and then terminates the line.
      *
      * @param x the double to print
@@ -128,7 +134,7 @@ public final class StdOut {
         out.println(x);
     }
 
-   /**
+    /**
      * Prints an integer to standard output and then terminates the line.
      *
      * @param x the integer to print
@@ -137,7 +143,7 @@ public final class StdOut {
         out.println(x);
     }
 
-   /**
+    /**
      * Prints an integer to standard output and then terminates the line.
      *
      * @param x the integer to print
@@ -146,7 +152,7 @@ public final class StdOut {
         out.println(x);
     }
 
-   /**
+    /**
      * Prints a long to standard output and then terminates the line.
      *
      * @param x the long to print
@@ -155,7 +161,7 @@ public final class StdOut {
         out.println(x);
     }
 
-   /**
+    /**
      * Prints a short integer to standard output and then terminates the line.
      *
      * @param x the short to print
@@ -164,7 +170,7 @@ public final class StdOut {
         out.println(x);
     }
 
-   /**
+    /**
      * Prints a byte to standard output and then terminates the line.
      * <p>
      * To write binary data, see {@link BinaryStdOut}.
@@ -175,14 +181,14 @@ public final class StdOut {
         out.println(x);
     }
 
-   /**
+    /**
      * Flushes standard output.
      */
     public static void print() {
         out.flush();
     }
 
-   /**
+    /**
      * Prints an object to standard output and flushes standard output.
      *
      * @param x the object to print
@@ -192,7 +198,7 @@ public final class StdOut {
         out.flush();
     }
 
-   /**
+    /**
      * Prints a boolean to standard output and flushes standard output.
      *
      * @param x the boolean to print
@@ -202,7 +208,7 @@ public final class StdOut {
         out.flush();
     }
 
-   /**
+    /**
      * Prints a character to standard output and flushes standard output.
      *
      * @param x the character to print
@@ -212,7 +218,7 @@ public final class StdOut {
         out.flush();
     }
 
-   /**
+    /**
      * Prints a double to standard output and flushes standard output.
      *
      * @param x the double to print
@@ -222,7 +228,7 @@ public final class StdOut {
         out.flush();
     }
 
-   /**
+    /**
      * Prints a float to standard output and flushes standard output.
      *
      * @param x the float to print
@@ -232,7 +238,7 @@ public final class StdOut {
         out.flush();
     }
 
-   /**
+    /**
      * Prints an integer to standard output and flushes standard output.
      *
      * @param x the integer to print
@@ -242,7 +248,7 @@ public final class StdOut {
         out.flush();
     }
 
-   /**
+    /**
      * Prints a long integer to standard output and flushes standard output.
      *
      * @param x the long integer to print
@@ -252,7 +258,7 @@ public final class StdOut {
         out.flush();
     }
 
-   /**
+    /**
      * Prints a short integer to standard output and flushes standard output.
      *
      * @param x the short integer to print
@@ -262,7 +268,7 @@ public final class StdOut {
         out.flush();
     }
 
-   /**
+    /**
      * Prints a byte to standard output and flushes standard output.
      *
      * @param x the byte to print
@@ -272,12 +278,14 @@ public final class StdOut {
         out.flush();
     }
 
-   /**
+    /**
      * Prints a formatted string to standard output, using the specified format
      * string and arguments, and then flushes standard output.
      *
      *
-     * @param format the <a href = "http://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html#syntax">format string</a>
+     * @param format the <a href =
+     *               "http://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html#syntax">format
+     *               string</a>
      * @param args   the arguments accompanying the format string
      */
     public static void printf(String format, Object... args) {
@@ -285,12 +293,14 @@ public final class StdOut {
         out.flush();
     }
 
-   /**
+    /**
      * Prints a formatted string to standard output, using the locale and
      * the specified format string and arguments; then flushes standard output.
      *
      * @param locale the locale
-     * @param format the <a href = "http://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html#syntax">format string</a>
+     * @param format the <a href =
+     *               "http://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html#syntax">format
+     *               string</a>
      * @param args   the arguments accompanying the format string
      */
     public static void printf(Locale locale, String format, Object... args) {
@@ -298,18 +308,40 @@ public final class StdOut {
         out.flush();
     }
 
-   /**
+    /**
      * Unit tests some methods in {@code StdOut}.
      *
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
 
+        LinkedList l1 = new LinkedList();
+        MemoryBlock m1 = new MemoryBlock(10, 5);
+        l1.addFirst(m1);
+        m1 = new MemoryBlock(20, 10);
+        l1.add(0, m1);
+        System.out.println(l1.toString() + "" + l1.getSize());
+        l1.remove(1);
+        System.out.println(l1.toString() + "" + l1.getSize());
+        l1.remove(m1);
+        System.out.println(l1.toString() + "" + l1.getSize());
+        m1 = new MemoryBlock(24, 12);
+        l1.addLast(m1);
+
+        m1 = new MemoryBlock(21, 9);
+        l1.add(1, m1);
+        System.out.println(l1.toString() + "" + l1.getSize());
+        // m1 = new MemoryBlock(50, 17);
+        // l1.add(3, m1);
+
+        // m1 = new MemoryBlock(70, 15);
+        // l1.addFirst(m1);
+
         // write to stdout
-        StdOut.println("Test");
-        StdOut.println(17);
-        StdOut.println(true);
-        StdOut.printf("%.6f\n", 1.0/7.0);
+        // StdOut.println("Test");
+        // StdOut.println(17);
+        // StdOut.println(true);
+        // StdOut.printf("%.6f\n", 1.0/7.0);
     }
 
 }
