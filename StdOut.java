@@ -314,28 +314,27 @@ public final class StdOut {
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
+        MemorySpace m1 = new MemorySpace(100);
+        System.out.println(m1);
+        m1.malloc(10);
+        m1.malloc(10);
+        m1.malloc(10);
+        m1.malloc(10);
+        m1.malloc(10);
+        m1.malloc(10);
+        System.out.println(m1);
+        m1.free(40);
+        m1.free(0);
+        m1.free(20);
+        m1.free(10);
+        System.out.println(m1);
+        m1.defrag();
+        System.out.println(m1);
+        //m1.free(20);
+        System.out.println(m1);
+        m1.defrag();
+        System.out.println(m1);
 
-        LinkedList l1 = new LinkedList();
-        MemoryBlock m1 = new MemoryBlock(10, 5);
-        l1.addFirst(m1);
-        m1 = new MemoryBlock(20, 10);
-        l1.add(0, m1);
-        System.out.println(l1.toString() + "" + l1.getSize());
-        l1.remove(1);
-        System.out.println(l1.toString() + "" + l1.getSize());
-        l1.remove(m1);
-        System.out.println(l1.toString() + "" + l1.getSize());
-        m1 = new MemoryBlock(24, 12);
-        l1.addLast(m1);
-
-        m1 = new MemoryBlock(21, 9);
-        l1.add(1, m1);
-        System.out.println(l1.toString() + "" + l1.getSize());
-        // m1 = new MemoryBlock(50, 17);
-        // l1.add(3, m1);
-
-        // m1 = new MemoryBlock(70, 15);
-        // l1.addFirst(m1);
 
         // write to stdout
         // StdOut.println("Test");

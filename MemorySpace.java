@@ -75,13 +75,12 @@ public class MemorySpace {
 				if (temp.length == length) {
 					allocatedList.addLast(temp);
 					freeList.remove(temp);
+					return temp.baseAddress;
 				}
-				else{
-					allocatedList.addLast(new MemoryBlock(temp.baseAddress, length));
-					temp.baseAddress += length;
-					temp.length -= length; 	
-				}
-				return temp.baseAddress;
+				allocatedList.addLast(new MemoryBlock(temp.baseAddress, length));
+				temp.baseAddress += length;
+				temp.length -= length;
+				return temp.baseAddress - length;
 			}
 		}
 		return -1;
@@ -96,6 +95,10 @@ public class MemorySpace {
 	 *                    the starting address of the block to freeList
 	 */
 	public void free(int address) {
+		if (allocatedList.getSize() == 0) {
+			throw new IllegalArgumentException(
+					"index must be between 0 and size");
+		}
 		ListIterator l1 = allocatedList.iterator();
 		while (l1.hasNext()) {
 			MemoryBlock temp = l1.next();
@@ -123,7 +126,28 @@ public class MemorySpace {
 	 * In this implementation Malloc does not call defrag.
 	 */
 	public void defrag() {
-		/// TODO: Implement defrag test
-		//// Write your code here
+		ListIterator l1 = freeList.iterator();
+		ListIterator l2;
+		while (l1.hasNext() && freeList.getSize() > 1) {
+			MemoryBlock temp1 = l1.next();
+			l2 = freeList.iterator();
+			while (l2.hasNext()) {
+				MemoryBlock temp2 = l2.next();
+				if (temp2.baseAddress == temp1.baseAddress + temp1.length) {
+					MemoryBlock temp3 = new MemoryBlock(temp1.baseAddress, temp1.length + temp2.length);
+					freeList.addLast(temp3);
+					freeList.remove(temp1);
+					freeList.remove(temp2);
+					temp1 = temp3;
+				}
+				else if (temp1.baseAddress == temp2.baseAddress + temp2.length) {
+					MemoryBlock temp3 = new MemoryBlock(temp2.baseAddress, temp2.length + temp1.length);
+					freeList.addLast(temp3);
+					freeList.remove(temp2);
+					freeList.remove(temp1);
+					temp1 = temp3;
+				}
+			}
+		}
 	}
 }

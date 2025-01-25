@@ -191,6 +191,10 @@ public class LinkedList {
 	 *             the node that will be removed from this list
 	 */
 	public void remove(Node node) {
+		if (size == 1) {
+			removeOne();
+			return;
+		}
 		int index = indexOf(node.block);
 		if (index == -1) {
 			return;
@@ -210,7 +214,11 @@ public class LinkedList {
 		size--;
 	}
 
-	
+	public void removeOne() {
+		first = null;
+		last = null;
+		size = 0;
+	}
 
 	/**
 	 * Removes from this list the node which is located at the given index.
@@ -224,9 +232,8 @@ public class LinkedList {
 		if (index < 0 || index >= size) {
 			throw new IllegalArgumentException(
 					"index must be between 0 and size");
-		} else {
-			remove(getNode(index));
 		}
+		remove(getNode(index));
 	}
 
 	/**
@@ -242,9 +249,8 @@ public class LinkedList {
 		if (index == -1) {
 			throw new IllegalArgumentException(
 					"index must be between 0 and size");
-		} else {
-			remove(index);
 		}
+		remove(index);
 	}
 
 	/**
@@ -260,7 +266,7 @@ public class LinkedList {
 	public String toString() {
 		String str = "";
 		for (int i = 0; i < size; i++) {
-			str += getNode(i).toString() + " -> ";
+			str += getNode(i).toString() + " ";
 		}
 		return str;
 	}
